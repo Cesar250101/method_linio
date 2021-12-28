@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+
+    <!-- model.name inherit form view -->
+    <record id="method_linio.view_company_form" model="ir.ui.view">
+      <field name="name">method.linio.view.company.form</field>
+      <field name="model">res.company</field>
+      <field name="inherit_id" ref="base.view_company_form"/>
+      <field name="arch" type="xml">
+            <xpath expr="//page" position="after">            
+                <page name="linio" string="Linio">
+                  <group>
+                    <group name="linio" string="Linio"> 
+                      <field name="user_id"/>
+                      <field name="json_format"/>
+                      <field name="api_key"/>
+                      <field name="dias_desde"/>
+                      <field name="ubicacion_stock"/>                      
+                    </group>
+
+                  </group>
+                </page>
+            </xpath>
+        
+      </field>
+    </record>
+
+    <!-- model.name inherit form view -->
+    <record id="method_linio.product_template_only_form_view" model="ir.ui.view">
+      <field name="name">method.linio.product.template.only.form_view</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='general_information']" position="after">
+          <page name="linio" string="Linio">
+              <group>
+                <group name="linio" string="Linio">
+                  <field name="sellersku"/>  
+                   <field name="shopsku"/>  
+                  <field name="variation"/>   
+                  <field name="parentSku"/>   
+                  <field name="price"/>   
+                  <field name="status"/>   
+                </group>                  
+                <group name="linio" string="Linio">
+                  <field name="productid"/>
+                  <field name="url" widget="url"/>
+                  <field name="image"/>
+                  <field name="description"/>
+                  <field name="brand"/>
+                  <field name="primarycategory"/>
+                  <field name="categories"/>
+                </group>                  
+              </group>
+          </page>
+        </xpath>
+        
+      </field>
+    </record>    
+    <!-- model.name inherit form view -->
+    <record id="method_linio.view_order_form" model="ir.ui.view">
+      <field name="name">method.linio.view.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='other_information']" position="after">
+          <page name="linio" string="Linio">
+              <group>
+                <group name="linio2" string="Linio">
+                  <field name="orderid" readonly="1"/>
+                  <field name="ordernumber" readonly="1"/>
+                  <field name="paymentmethod" readonly="1"/>
+                  <field name="statuses" string="Status" readonly="1"/>                  
+                </group>
+              </group>
+          </page>
+        </xpath>
+        
+      </field>
+    </record>
+
+  </data>
+</odoo>
