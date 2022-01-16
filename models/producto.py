@@ -72,7 +72,7 @@ class Productos(models.Model):
                 description=p['Description']
                 brand=p['Brand']
                 primarycategory=p['PrimaryCategory']
-                product_id=self.env['product.template'].search([('productid','=',productid)],limit=1)
+                product_id=self.env['product.template'].search([('default_code','=',sellersku)],limit=1)
                 try:
                     categories=p['Categories']                
                     category_id=self.env['product.category'].search([('name','=',categories)],limit=1)
@@ -88,6 +88,7 @@ class Productos(models.Model):
                             'sellersku':sellersku,
                             'shopsku':shopsku,
                             'name':name,
+                            'default_code':sellersku,
                             'categ_id':category_id.id,
                             'type':'product',
                             'variation':variation,
